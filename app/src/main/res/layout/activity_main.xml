@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zacharymitchell.mtgcompanion.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EEEEEE"
+        android:orientation="vertical">
+
+        <RelativeLayout
+
+            android:id="@+id/topRelative"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:background="#424242"
+            android:gravity="start"
+            >
+            
+            <RelativeLayout
+                android:id="@+id/menuLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+                <include layout="@layout/test"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:layout_centerInParent="true"
+                    />
+
+                <ImageButton
+                    android:id="@+id/closeMenuButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000000"
+                    android:visibility="visible"/>
+
+
+
+            </RelativeLayout>
+
+
+
+            <ImageButton
+                android:src="@drawable/mana_wheel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:rotation="180"
+                android:id="@+id/manaTop"
+                android:onClick="showPopUp" />
+
+            <Button
+                android:id="@+id/plusTop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="60dp"
+                android:background="#00ffffff"
+                android:rotation="180"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-10"
+                android:shadowDy="-10"
+                android:shadowRadius="10"
+                android:text="+"
+                android:textColor="@color/light_font"
+                android:textSize="70sp"
+                android:visibility="visible"/>
+
+            <Button
+                android:id="@+id/minusTop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="30dp"
+                android:background="#00ffffff"
+                android:rotation="180"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-10"
+                android:shadowDy="-10"
+                android:shadowRadius="10"
+                android:text="-"
+                android:textColor="@color/light_font"
+                android:textSize="70sp"
+                android:visibility="visible"/>
+
+
+            <TextView
+                android:id="@+id/topNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:rotation="180"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-10"
+                android:shadowDy="-10"
+                android:shadowRadius="10"
+                android:text="20"
+                android:textColor="@color/light_font"
+                android:textSize="125sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/tree"
+            android:gravity="start">
+
+            <ImageButton
+                android:src="@drawable/mana_wheel"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:id="@+id/manaBottom"
+                android:onClick="showPopUp"/>
+
+            <Button
+                android:id="@+id/minusBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:background="#00ffffff"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-10"
+                android:shadowDy="-10"
+                android:shadowRadius="10"
+                android:text="-"
+                android:textColor="@color/light_font"
+                android:textSize="70sp" />
+
+            <Button
+                android:id="@+id/plusBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="60dp"
+                android:background="#00ffffff"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-10"
+                android:shadowDy="-10"
+                android:shadowRadius="10"
+                android:text="+"
+                android:textColor="@color/light_font"
+                android:textSize="70sp" />
+
+
+            <TextView
+                android:id="@+id/bottomNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:rotation="0"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-10"
+                android:shadowDy="-10"
+                android:shadowRadius="10"
+                android:text="20"
+                android:textColor="@color/light_font"
+                android:textSize="125sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_centerInParent="true"
+        android:id="@+id/manaButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:adjustViewBounds="true"
+        android:background="#00000000"
+        android:scaleType="fitXY"
+        android:src="@drawable/magic_symbol" />
+
+</RelativeLayout>
