@@ -1,68 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.zacharymitchell.mtgcompanion.MainActivity">
 
     <LinearLayout
-        android:id="@+id/layoutBottom"
+        android:id="@+id/LinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EEEEEE"
+        android:background="#000000"
         android:orientation="vertical">
 
-        <RelativeLayout
 
-            android:id="@+id/topRelative"
+        <RelativeLayout
+            android:id="@+id/topHalfRelativeLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="0dp"
+            android:layout_marginBottom="2dp"
             android:layout_weight="1"
-            android:background="#424242"
-            android:gravity="start"
-            >
-            
-            <RelativeLayout
-                android:id="@+id/menuLayout"
+            android:background="@drawable/default_gradient_top">
+
+            <ImageView
+                android:id="@+id/topImageView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible">
-
-                <include layout="@layout/test"
-                    android:layout_width="300dp"
-                    android:layout_height="200dp"
-                    android:layout_centerInParent="true"
-                    />
-
-                <ImageButton
-                    android:id="@+id/closeMenuButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#000000"
-                    android:visibility="visible"/>
-
-
-
-            </RelativeLayout>
-
-
+                android:layout_height="match_parent" />
 
             <ImageButton
-                android:src="@drawable/mana_wheel"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:adjustViewBounds="true"
+                android:id="@+id/clearButtonTop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
                 android:background="#00000000"
-                android:scaleType="fitXY"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="15dp"
-                android:rotation="180"
-                android:id="@+id/manaTop"
-                android:onClick="showPopUp" />
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/plusTop"
@@ -71,19 +43,21 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginBottom="60dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="60dp"
-                android:layout_marginBottom="60dp"
                 android:background="#00ffffff"
+                android:onClick="numberChange"
                 android:rotation="180"
                 android:shadowColor="@color/text_shadow"
                 android:shadowDx="-10"
                 android:shadowDy="-10"
                 android:shadowRadius="10"
-                android:text="+"
+                android:text="@string/plus_symbol"
                 android:textColor="@color/light_font"
                 android:textSize="70sp"
-                android:visibility="visible"/>
+                android:visibility="visible" />
+
 
             <Button
                 android:id="@+id/minusTop"
@@ -92,21 +66,24 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginBottom="60dp"
                 android:layout_marginRight="30dp"
+                android:layout_marginTop="60dp"
                 android:background="#00ffffff"
+                android:onClick="numberChange"
                 android:rotation="180"
                 android:shadowColor="@color/text_shadow"
                 android:shadowDx="-10"
                 android:shadowDy="-10"
                 android:shadowRadius="10"
-                android:text="-"
+                android:text="@string/minus_symbol"
                 android:textColor="@color/light_font"
                 android:textSize="70sp"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
 
             <TextView
-                android:id="@+id/topNumber"
+                android:id="@+id/numberTop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -121,32 +98,76 @@
                 android:textSize="125sp"
                 android:textStyle="bold" />
 
+            <ImageButton
+                android:id="@+id/manaTop"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:rotation="180"
+                android:scaleType="fitXY"
+                android:src="@drawable/mana_wheel" />
+
+            <TextView
+                android:id="@+id/poisonTopText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poison: 0"
+                android:rotation="180"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_above="@id/numberTop"
+                android:layout_marginBottom="-10dp"
+                android:layout_centerHorizontal="true"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-5"
+                android:shadowDy="-5"
+                android:shadowRadius="10"
+                android:textColor="@color/light_font"
+                android:visibility="gone"
+                />
+
+            <SeekBar
+                android:id="@+id/poisonBarTop"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/poisonTopText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:maxHeight="4dp"
+                android:progressDrawable="@drawable/seekbar_progress"
+                android:rotation="180"
+                android:thumb="@drawable/seekbar"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
-
         <RelativeLayout
+            android:id="@+id/bottomHalfRelativeLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="bottom"
             android:layout_marginTop="2dp"
             android:layout_weight="1"
-            android:background="@drawable/tree"
-            android:gravity="start">
+            android:background="@drawable/default_gradient_bottom">
+
+            <ImageView
+                android:id="@+id/bottomImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"/>
 
             <ImageButton
-                android:src="@drawable/mana_wheel"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:adjustViewBounds="true"
+                android:id="@+id/clearButtonBottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
                 android:background="#00000000"
-                android:scaleType="fitXY"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:id="@+id/manaBottom"
-                android:onClick="showPopUp"/>
+                android:visibility="gone" />
+
 
             <Button
                 android:id="@+id/minusBottom"
@@ -155,15 +176,20 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginBottom="60dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="60dp"
                 android:background="#00ffffff"
+                android:onClick="numberChange"
+                android:rotation="0"
                 android:shadowColor="@color/text_shadow"
                 android:shadowDx="-10"
                 android:shadowDy="-10"
                 android:shadowRadius="10"
-                android:text="-"
+                android:text="@string/minus_symbol"
                 android:textColor="@color/light_font"
-                android:textSize="70sp" />
+                android:textSize="70sp"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/plusBottom"
@@ -172,21 +198,24 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginBottom="60dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="60dp"
-                android:layout_marginBottom="60dp"
                 android:background="#00ffffff"
+                android:onClick="numberChange"
+                android:rotation="0"
                 android:shadowColor="@color/text_shadow"
                 android:shadowDx="-10"
                 android:shadowDy="-10"
                 android:shadowRadius="10"
-                android:text="+"
+                android:text="@string/plus_symbol"
                 android:textColor="@color/light_font"
-                android:textSize="70sp" />
+                android:textSize="70sp"
+                android:visibility="visible" />
 
 
             <TextView
-                android:id="@+id/bottomNumber"
+                android:id="@+id/numberBottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -201,19 +230,830 @@
                 android:textSize="125sp"
                 android:textStyle="bold" />
 
+            <ImageButton
+                android:id="@+id/manaBottom"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:rotation="0"
+                android:scaleType="fitXY"
+                android:src="@drawable/mana_wheel" />
+
+            <TextView
+                android:id="@+id/poisonBottomText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poison: 0"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/numberBottom"
+                android:layout_marginTop="-10dp"
+                android:layout_centerHorizontal="true"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-5"
+                android:shadowDy="-5"
+                android:shadowRadius="10"
+                android:textColor="@color/light_font"
+                android:visibility="gone"
+                />
+
+            <SeekBar
+                android:id="@+id/poisonBarBottom"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/poisonBottomText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:maxHeight="4dp"
+                android:progressDrawable="@drawable/seekbar_progress"
+                android:thumb="@drawable/seekbar"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
     </LinearLayout>
 
     <ImageButton
-        android:layout_centerInParent="true"
-        android:id="@+id/manaButton"
+        android:id="@+id/clearCenter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/centerButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:adjustViewBounds="true"
         android:background="#00000000"
         android:scaleType="fitXY"
         android:src="@drawable/magic_symbol" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/menuRelativeLayoutTop"
+            android:layout_width="310dp"
+            android:layout_height="220dp"
+            android:layout_above="@+id/menuCenter"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/layout_bg"
+            android:rotation="180"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/fire_gradient_flipped"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/fire" />
+
+            <Button
+                android:id="@+id/_fire_gradient_flipped"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/plant_gradient_flipped"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@id/fire_gradient_flipped"
+                android:layout_toRightOf="@id/fire_gradient_flipped"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/plant" />
+
+            <Button
+                android:id="@+id/_plant_gradient_flipped"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_toEndOf="@+id/_fire_gradient_flipped"
+                android:layout_toRightOf="@+id/_fire_gradient_flipped"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/earth_gradient_flipped"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@id/plant_gradient_flipped"
+                android:layout_toRightOf="@id/plant_gradient_flipped"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/earth" />
+
+            <Button
+                android:id="@+id/_earth_gradient_flipped"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_toEndOf="@+id/_plant_gradient_flipped"
+                android:layout_toRightOf="@+id/_plant_gradient_flipped"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/water_gradient_flipped"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fire_gradient_flipped"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/water" />
+
+            <Button
+                android:id="@+id/_water_gradient_flipped"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_below="@+id/_fire_gradient_flipped"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/night_gradient_flipped"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fire_gradient_flipped"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@+id/water_gradient_flipped"
+                android:layout_toRightOf="@+id/water_gradient_flipped"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/night" />
+
+            <Button
+                android:id="@+id/_night_gradient_flipped"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_below="@+id/_plant_gradient_flipped"
+                android:layout_toEndOf="@+id/_water_gradient_flipped"
+                android:layout_toRightOf="@+id/_water_gradient_flipped"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/poison_gradient_flipped"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/earth_gradient_flipped"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@+id/night_gradient_flipped"
+                android:layout_toRightOf="@+id/night_gradient_flipped"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="poisonButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/poison" />
+
+            <Button
+                android:id="@+id/poison_flipped"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_below="@+id/_earth_gradient_flipped"
+                android:layout_toEndOf="@+id/_night_gradient_flipped"
+                android:layout_toRightOf="@+id/_night_gradient_flipped"
+                android:background="#00000000"
+                android:onClick="poisonButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/diceCenterDotF"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/dice_dot"
+                android:background="#00000000"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:visibility="invisible"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menuRelativeLayoutBottom"
+            android:layout_width="310dp"
+            android:layout_height="220dp"
+            android:layout_below="@id/menuCenter"
+            android:layout_centerHorizontal="true"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/layout_bg"
+            android:rotation="0"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/fire_gradient"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/fire" />
+
+            <Button
+                android:id="@+id/_fire_gradient"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/plant_gradient"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@id/fire_gradient"
+                android:layout_toRightOf="@id/fire_gradient"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/plant" />
+
+            <Button
+                android:id="@+id/_plant_gradient"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_toEndOf="@+id/_fire_gradient"
+                android:layout_toRightOf="@+id/_fire_gradient"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/earth_gradient"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@id/plant_gradient"
+                android:layout_toRightOf="@id/plant_gradient"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/earth" />
+
+            <Button
+                android:id="@+id/_earth_gradient"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_toEndOf="@+id/_plant_gradient"
+                android:layout_toRightOf="@+id/_plant_gradient"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/water_gradient"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fire_gradient"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/water" />
+
+            <Button
+                android:id="@+id/_water_gradient"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_below="@+id/_fire_gradient"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/night_gradient"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fire_gradient"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@+id/water_gradient"
+                android:layout_toRightOf="@+id/water_gradient"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/night" />
+
+            <Button
+                android:id="@+id/_night_gradient"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_below="@+id/_plant_gradient"
+                android:layout_toEndOf="@+id/_water_gradient"
+                android:layout_toRightOf="@+id/_water_gradient"
+                android:background="#00000000"
+                android:onClick="themeButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/poison_gradient"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/earth_gradient"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@+id/night_gradient"
+                android:layout_toRightOf="@+id/night_gradient"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:src="@drawable/poison" />
+
+            <Button
+                android:id="@+id/poison"
+                android:layout_width="105dp"
+                android:layout_height="110dp"
+                android:layout_below="@+id/_earth_gradient"
+                android:layout_toEndOf="@+id/_night_gradient"
+                android:layout_toRightOf="@+id/_night_gradient"
+                android:background="#00000000"
+                android:onClick="poisonButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/diceCenterDot"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/dice_dot"
+                android:background="#00000000"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:visibility="invisible"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menuCenter"
+            android:layout_width="310dp"
+            android:layout_height="160dp"
+            android:layout_centerInParent="true"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/layout_center"
+            android:rotation="0"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/reset"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:src="@drawable/reset" />
+
+            <ImageButton
+                android:id="@+id/numbers"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/reset"
+                android:layout_toRightOf="@id/reset"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:src="@drawable/numbers" />
+
+            <ImageButton
+                android:id="@+id/history"
+                android:layout_width="49dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/numbers"
+                android:layout_toEndOf="@+id/numbers"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:src="@drawable/history"/>
+
+
+            <ImageButton
+                android:id="@+id/picturetest"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/reset"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:src="@drawable/picture" />
+
+            <ImageButton
+                android:id="@+id/dice"
+                android:layout_width="51dp"
+                android:layout_height="51dp"
+                android:layout_below="@id/reset"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@+id/picturetest"
+                android:layout_toRightOf="@+id/picturetest"
+                android:layout_marginLeft="38dp"
+                android:layout_marginStart="38dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:src="@drawable/diceicon"/>
+
+            <ImageButton
+                android:id="@+id/information"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/reset"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@+id/dice"
+                android:layout_toRightOf="@+id/dice"
+                android:layout_marginLeft="38dp"
+                android:layout_marginStart="38dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:src="@drawable/information"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menuNumbers"
+            android:layout_width="310dp"
+            android:layout_height="160dp"
+            android:layout_centerInParent="true"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/layout_center"
+            android:rotation="0"
+            android:visibility="gone">
+
+
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:scaleType="fitXY"
+                android:src="@drawable/back" />
+
+            <ImageButton
+                android:id="@+id/_10Button"
+                android:layout_width="51dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="38dp"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/back"
+                android:layout_toRightOf="@id/back"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="numberSet"
+                android:scaleType="fitXY"
+                android:src="@drawable/ten" />
+
+            <ImageButton
+                android:id="@+id/_20Button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/_10Button"
+                android:layout_toRightOf="@id/_10Button"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="numberSet"
+                android:scaleType="fitXY"
+                android:src="@drawable/twenty" />
+
+            <ImageButton
+                android:id="@+id/_30Button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_below="@id/back"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="numberSet"
+                android:scaleType="fitXY"
+                android:src="@drawable/thirty" />
+
+            <ImageButton
+                android:id="@+id/_40Button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_below="@id/back"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/_30Button"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="numberSet"
+                android:scaleType="fitXY"
+                android:src="@drawable/forty" />
+
+            <ImageButton
+                android:id="@+id/_50Button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_below="@id/back"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/_40Button"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:onClick="numberSet"
+                android:scaleType="fitXY"
+                android:src="@drawable/fifty" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/pictureMenu"
+            android:layout_width="310dp"
+            android:layout_height="600dp"
+            android:layout_centerInParent="true"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/layout_center"
+            android:rotation="0"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/plusPictureTop"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_alignParentTop="true"
+                android:textSize="100sp"
+                android:textColor="#B1BCBE"
+                android:textAlignment="center"
+                android:background="@null"
+                android:src="@drawable/plus"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/plusPictureBottom"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_alignParentBottom="true"
+                android:textSize="100sp"
+                android:textColor="#B1BCBE"
+                android:textAlignment="center"
+                android:background="@null"
+                android:src="@drawable/plus"
+                android:scaleType="fitCenter" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/diceMenu"
+            android:layout_width="310dp"
+            android:layout_height="600dp"
+            android:layout_centerInParent="true"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/layout_center"
+            android:rotation="0"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/topDice"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="25dp"
+                android:contentDescription="dice one"
+                android:src="@drawable/dice_one"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/historyMenu"
+        android:layout_width="310dp"
+        android:layout_height="600dp"
+        android:layout_centerInParent="true"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/layout_center"
+        android:rotation="0"
+        android:visibility="invisible" >
+
+        <TextView
+            android:id="@+id/topPlayerScore"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="Top   Life Count"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:paddingTop="10dp"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/topPoisonCount"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="Top Poison Count"
+            android:layout_toRightOf="@+id/topPlayerScore"
+            android:paddingTop="10dp"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/bottomPlayerScore"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="Bottom Life  Count"
+            android:layout_toRightOf="@+id/topPoisonCount"
+            android:paddingTop="10dp"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/bottomPoisonCount"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="Bottom Poison Count"
+            android:layout_toRightOf="@+id/bottomPlayerScore"
+            android:paddingTop="10dp"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center"/>
+
+        <ListView
+            android:id="@+id/score_history"
+            android:layout_width="match_parent"
+            android:layout_height="410dp"
+            android:layout_below="@+id/topPlayerScore"
+            android:paddingTop="10dp"
+            android:background="@drawable/history_border"
+            >
+        </ListView>
+
+        <ImageButton
+            android:id="@+id/backHistory"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/score_history"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:adjustViewBounds="true"
+            android:background="#00000000"
+            android:onClick="themeButtonClicked"
+            android:scaleType="fitXY"
+            android:src="@drawable/back" />
+
+        <Button
+            android:id="@+id/_backHistory"
+            android:layout_width="105dp"
+            android:layout_height="110dp"
+            android:layout_below="@+id/score_history"
+            android:background="#00000000"
+             />
+
+        <ImageButton
+            android:id="@+id/historyInformation"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/score_history"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@+id/backHistory"
+            android:layout_toRightOf="@+id/backHistory"
+            android:adjustViewBounds="true"
+            android:background="#00000000"
+            android:onClick="themeButtonClicked"
+            android:scaleType="fitXY"
+            android:src="@drawable/information" />
+
+        <Button
+            android:id="@+id/_historyInformation"
+            android:layout_width="105dp"
+            android:layout_height="110dp"
+            android:layout_below="@+id/score_history"
+            android:layout_toEndOf="@+id/backHistory"
+            android:layout_toRightOf="@+id/backHistory"
+            android:background="#00000000"
+            android:onClick="themeButtonClicked" />
+
+        <ImageButton
+            android:id="@+id/historyTrash"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/score_history"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@+id/historyInformation"
+            android:layout_toRightOf="@+id/historyInformation"
+            android:adjustViewBounds="true"
+            android:background="#00000000"
+            android:scaleType="fitXY"
+            android:src="@drawable/poison" />
+
+        <Button
+            android:id="@+id/_historyTrash"
+            android:layout_width="105dp"
+            android:layout_height="110dp"
+            android:layout_below="@+id/score_history"
+            android:layout_toEndOf="@+id/historyInformation"
+            android:layout_toRightOf="@+id/historyInformation"
+            android:background="#00000000"
+            android:onClick="poisonButtonClicked" />
+    </RelativeLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/blackScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000" > </FrameLayout>
+
+</FrameLayout>
